@@ -1,5 +1,11 @@
-class UsersController < ApplicationController
-  
+class Admin::UsersController < ApplicationController
+
+  before_filter :admin_only
+
+  def index
+    @users = User.all
+  end
+
   def new
     @user = User.new
   end
@@ -14,10 +20,14 @@ class UsersController < ApplicationController
       render :new
     end
   end
+  
+  def show
+    @user = User.find(params[:id])
+  end
 
   protected
 
   def user_params
-    params.require(:user).permit(:email, :firstname, :lastname, :password, :password_confirmation)
+    params.require(:user).permit(:email, :firstname, :lastname, :password, :password_confirmation, :admin)
   end
 end
