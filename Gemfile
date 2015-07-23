@@ -49,3 +49,4 @@ gem "carrierwave"
 gem "kaminari"
 
 gem 'pry'
+gem 'bootstrap-sass'

@@ -1,12 +1,18 @@
 <h1>Rotten Mangoes</h1>
-  <%= link_to "Submit a movie!", new_movie_path %>
+  <%= link_to "Submit A Movie!", new_movie_path %>
+
+<%= form_tag movies_path, :method => 'get' do %>
+  <%= text_field_tag(:search) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
 <hr>
-  <% @movies.each do |movie| %>
-    <%= link_to image_tag(movie.poster_image_url), movie_path(movie) %>
-    <%= link_to image_tag(movie.remote_image_url), movie_path(movie) %>
-    <h2><%= link_to movie.title, movie_path(movie) %> | <%= movie.review_average %>/10</h2>
-    <h3><%= formatted_date(movie.release_date) %></h3>
-    <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
-    <p><%= movie.description %></p>
-    <hr>
-  <% end %>
+<% @movies.each do |movie| %>
+  <%= link_to image_tag(movie.poster_image_url), movie_path(movie) %>
+  <%= link_to image_tag(movie.remote_image_url), movie_path(movie) %>
+  <h2><%= link_to movie.title, movie_path(movie) %> | <%= movie.review_average %>/10</h2>
+  <h3><%= formatted_date(movie.release_date) %></h3>
+  <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
+  <p><%= movie.description %></p>
+  <hr>
+<% end %>
