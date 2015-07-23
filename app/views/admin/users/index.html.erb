@@ -1,7 +1,34 @@
 <h1>All Users</h1>
+<div><%= paginate @users %></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Created at</th>
+      <th>Updated at</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= link_to user.full_name, admin_user_path(user) %></td>
+      <td><%= user.email %></td>
+      <td><%= formatted_date(user.created_at) %></td>
+      <td><%= formatted_date(user.updated_at) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <% @users.each do |user| %>
 
   <h2><%= link_to user.full_name, admin_user_path(user) %></h2>
   <p>Email: <%= user.email %></p>
   <p>Created at: <%= formatted_date(user.created_at) %> | Updated at: <%= formatted_date(user.updated_at) %></p>
 <% end %>
+
+
+
