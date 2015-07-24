@@ -2,6 +2,7 @@
   <%= link_to "Submit A Movie!", new_movie_path %>
 
   <%= form_tag movies_path, :method => 'get' do %>
+    <%= label_tag(:search, "Search for Title/Director:") %>
     <%= text_field_tag(:search) %>
     <%= submit_tag("Search") %>
   <% end %>

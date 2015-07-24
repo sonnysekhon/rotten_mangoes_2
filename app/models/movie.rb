@@ -3,6 +3,7 @@ class Movie < ActiveRecord::Base
 
   # scope :director, ->(name) {where("director like ?", "%#{name}%")}
   # scope :title, ->(name) {where("title like ?", "%#{name}%")}
+  scope :search, -> (name) { where(['title like ? or director like ?', "%#{name}%", "%#{name}%"]) }
 
   validates :title, presence: true
 
